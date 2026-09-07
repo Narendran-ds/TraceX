@@ -14,6 +14,25 @@
   "generated_by": "scripts/build_scenarios.py",
   "address_derivation": "Synthetic addresses are '0x' + sha256('sih26183:' + label)[:40]. Addresses that resolve to a real public attribution source (exchange hot wallets, bridge contracts, OFAC-designated addresses) are real and used verbatim.",
   "addresses": {
+    "0xc7fcc67f7288b5858cf1ecdc77b27c61727034c8": [
+      {
+        "tx_hash": "0xd8865758ffe9856ad67208fed938cecad90f04317679587449148b27b9cbeb7f",
+        "timestamp": "2026-06-25T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0xc7fcc67f7288b5858cf1ecdc77b27c61727034c8",
+            "amount": 9.05
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x1a66219ea1d3d3c30d4fd412e16ed3eedbeef10f",
+            "amount": 9.0
+          }
+        ],
+        "fee": 0.05
+      }
+    ],
     "0x1a66219ea1d3d3c30d4fd412e16ed3eedbeef10f": [
       {
         "tx_hash": "0xd8865758ffe9856ad67208fed938cecad90f04317679587449148b27b9cbeb7f",
@@ -133,25 +152,6 @@
           }
         ],
         "fee": 0.01
-      }
-    ],
-    "0xc7fcc67f7288b5858cf1ecdc77b27c61727034c8": [
-      {
-        "tx_hash": "0xd8865758ffe9856ad67208fed938cecad90f04317679587449148b27b9cbeb7f",
-        "timestamp": "2026-06-25T09:00:00+00:00",
-        "inputs": [
-          {
-            "address": "0xc7fcc67f7288b5858cf1ecdc77b27c61727034c8",
-            "amount": 9.05
-          }
-        ],
-        "outputs": [
-          {
-            "address": "0x1a66219ea1d3d3c30d4fd412e16ed3eedbeef10f",
-            "amount": 9.0
-          }
-        ],
-        "fee": 0.05
       }
     ],
     "0x9b12dae9e4f20e2b9b86f8642be1ab5cdc80bdcd": [

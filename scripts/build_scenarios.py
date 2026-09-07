@@ -391,6 +391,9 @@ def scenario_bitcoin_cluster() -> Path:
     )
 
 
+from scripts.emit_demo_cases import write_demo_case_list  # noqa: E402
+
+
 def main() -> int:
     built = [
         scenario_laundering(),
@@ -409,7 +412,9 @@ def main() -> int:
             f"  {path.name:<40} {len(document['addresses']):>3} addresses, "
             f"{tx_count:>3} transactions"
         )
+    demo_list = write_demo_case_list(built)
     print(f"\n{len(built)} scenario(s) written to {FIXTURE_DIR}")
+    print(f"Intake case list -> {demo_list.relative_to(REPO_ROOT)}")
     return 0
 
 

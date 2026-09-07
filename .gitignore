@@ -8,3 +8,4 @@ frontend/dist/
 data/reports/
 .pytest_cache/
 .env
+frontend/dist/

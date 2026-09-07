@@ -1,0 +1,107 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    /* Node/edge colours are read by the canvas renderer, which cannot use
+       Tailwind classes. Single source of truth with tailwind.config.js. */
+    --role-suspect: oklch(0.780 0.155 62);
+    --role-victim: oklch(0.720 0.115 245);
+    --role-intermediary: oklch(0.640 0.028 250);
+    --role-exchange: oklch(0.760 0.130 172);
+    --role-mixer: oklch(0.680 0.185 24);
+    --role-bridge: oklch(0.720 0.140 305);
+    --trail: oklch(0.790 0.150 72);
+    --trail-deep: oklch(0.420 0.090 72);
+    --graph-ground: oklch(0.165 0.011 250);
+    --edge-idle: oklch(0.380 0.014 250);
+    --node-stroke: oklch(0.165 0.011 250);
+    --label: oklch(0.795 0.010 250);
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-ink-900 text-type-mid font-sans text-base antialiased;
+    /* A faint vertical gradient keeps the ground from reading as flat black
+       without tipping into a decorative background. */
+    background-image: radial-gradient(
+      120% 80% at 50% 0%,
+      oklch(0.205 0.014 250) 0%,
+      oklch(0.165 0.011 250) 60%
+    );
+    background-attachment: fixed;
+  }
+
+  /* Focus is a real state here, not an afterthought: this tool is driven by
+     keyboard as much as mouse in a police station. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-trail/70 ring-offset-2 ring-offset-ink-900;
+  }
+
+  ::selection {
+    background: oklch(0.790 0.150 72 / 0.28);
+    color: oklch(0.965 0.004 250);
+  }
+
+  /* Scrollbars: styled to match the panel, not reinvented. Standard behaviour,
+     standard size. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(0.355 0.014 250) transparent;
+  }
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  *::-webkit-scrollbar-thumb {
+    background: oklch(0.325 0.013 250);
+    border: 3px solid transparent;
+    background-clip: content-box;
+    border-radius: 6px;
+  }
+  *::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.400 0.014 250);
+    background-clip: content-box;
+  }
+}
+
+@layer components {
+  /* Addresses and transaction hashes are always monospace and always
+     selectable — an investigator copies these into a case file. */
+  .hash {
+    @apply font-mono text-xs tracking-tight text-type-lo select-all;
+  }
+
+  .panel {
+    @apply bg-ink-800 border border-ink-400 rounded-md;
+  }
+
+  .field-label {
+    @apply block text-2xs font-medium uppercase tracking-wider text-type-faint;
+  }
+}
+
+@layer utilities {
+  /* Reduced motion is not optional. Everything that moves has a still
+     alternative; nothing is gated on a transition firing. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
