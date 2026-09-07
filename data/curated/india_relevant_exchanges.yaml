@@ -1,0 +1,55 @@
+# Hand-curated, India-relevant attribution layer.
+#
+# Small and high-precision by design. The point of this file is not coverage —
+# the TagPack layer does coverage. The point is that every row here has been
+# checked by a human against a public source, so an attribution claim in a
+# generated report can be defended line by line.
+#
+# CURATION STANDARD (do not relax this):
+#   1. The label must be visible on a public page that anyone can open.
+#   2. The `source` URL must be that page, not a search result or a forum post.
+#   3. If you cannot open the URL and see the label, the entry does not go in.
+#      Move it to `pending_verification` below instead of guessing.
+#   4. An entry that is removed upstream is removed here too.
+#
+# This standard is why `pending_verification` exists and is not empty. Publishing
+# an unverified deposit address as attribution would be exactly the fabrication
+# this project refuses to make: it would put an exchange's name in a police case
+# file on the strength of a guess.
+
+title: India-relevant exchange addresses (hand-curated)
+creator: SIH26183 team
+source_name: manual_curated
+source: https://github.com/graphsense/graphsense-tagpacks
+currency: ETH
+lastmod: 2026-09-07
+confidence: 0.8
+
+tags:
+  # Global exchanges with substantial Indian user bases and publicly labelled
+  # on-chain addresses. Cash-outs in Indian cases frequently land at these.
+  - address: "0x28C6c06298d514Db089934071355E5743bf21d60"
+    label: Binance (India-serving venue)
+    category: exchange
+    source: https://etherscan.io/address/0x28C6c06298d514Db089934071355E5743bf21d60
+    confidence: 0.85
+
+  - address: "0x6cC5F688a315f3dC28A7781717a9A798a59fDA7b"
+    label: OKX (India-serving venue)
+    category: exchange
+    source: https://etherscan.io/address/0x6cC5F688a315f3dC28A7781717a9A798a59fDA7b
+    confidence: 0.8
+
+# Entities that matter for Indian cases but for which this team has NOT verified
+# a deposit address from a public source. They are named here so the gap is
+# visible and can be closed by a curator with better sources — not silently
+# omitted, and not filled in with a plausible-looking guess.
+#
+# The ingester reads `tags:` only, so nothing below is loaded into the database.
+pending_verification:
+  - entity: WazirX
+    reason: No deposit address verified from a public source by this team.
+  - entity: CoinDCX
+    reason: No deposit address verified from a public source by this team.
+  - entity: ZebPay
+    reason: No deposit address verified from a public source by this team.

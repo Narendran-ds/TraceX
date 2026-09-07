@@ -1,0 +1,478 @@
+{
+  "slug": "case-d-legitimate-consolidation",
+  "complaint_id": "CYB-2026-00140",
+  "title": "Ordinary exchange deposit consolidation (control case)",
+  "narrative": "A control case with the same converging shape as a laundering consolidation. Funds leave over days in irregular amounts, the recipients are unrelated to each other, and they all later deposit at the same publicly attributed exchange. The engine checks the convergence, applies its contextual features, and deliberately does not flag it.",
+  "demonstrates": [
+    "a converging shape that is correctly NOT reported",
+    "fan-in disambiguation via attribution and cluster age",
+    "the suppressed signal shown with its reason, not hidden"
+  ],
+  "seed_address": "0x1a66219ea1d3d3c30d4fd412e16ed3eedbeef10f",
+  "chain": "ethereum",
+  "provenance": "synthetic_scenario",
+  "generated_by": "scripts/build_scenarios.py",
+  "address_derivation": "Synthetic addresses are '0x' + sha256('sih26183:' + label)[:40]. Addresses that resolve to a real public attribution source (exchange hot wallets, bridge contracts, OFAC-designated addresses) are real and used verbatim.",
+  "addresses": {
+    "0x1a66219ea1d3d3c30d4fd412e16ed3eedbeef10f": [
+      {
+        "tx_hash": "0xd8865758ffe9856ad67208fed938cecad90f04317679587449148b27b9cbeb7f",
+        "timestamp": "2026-06-25T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0xc7fcc67f7288b5858cf1ecdc77b27c61727034c8",
+            "amount": 9.05
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x1a66219ea1d3d3c30d4fd412e16ed3eedbeef10f",
+            "amount": 9.0
+          }
+        ],
+        "fee": 0.05
+      },
+      {
+        "tx_hash": "0x3f8a6ca029e51d040aa06b2a651b865c18ff5bcc739e82faf4afd55eccfbd254",
+        "timestamp": "2026-07-01T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x1a66219ea1d3d3c30d4fd412e16ed3eedbeef10f",
+            "amount": 1.38
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x9b12dae9e4f20e2b9b86f8642be1ab5cdc80bdcd",
+            "amount": 1.37
+          }
+        ],
+        "fee": 0.01
+      },
+      {
+        "tx_hash": "0xb3230cf4492e8378857700beea2d73f1303818b2451766d419df8f2a40d6304f",
+        "timestamp": "2026-07-03T16:12:00+00:00",
+        "inputs": [
+          {
+            "address": "0x1a66219ea1d3d3c30d4fd412e16ed3eedbeef10f",
+            "amount": 0.95
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0xed55479e7257ebc741f998961447f662d0ac47b7",
+            "amount": 0.94
+          }
+        ],
+        "fee": 0.01
+      },
+      {
+        "tx_hash": "0x9018dec453cbee05d0ae952f0a268e0c10ce3b09c0ceea923113b21e00c94b5d",
+        "timestamp": "2026-07-05T23:24:00+00:00",
+        "inputs": [
+          {
+            "address": "0x1a66219ea1d3d3c30d4fd412e16ed3eedbeef10f",
+            "amount": 2.12
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0xb2431e9bf2b43f97d79ef64ae3f99d7b5a7303c5",
+            "amount": 2.11
+          }
+        ],
+        "fee": 0.01
+      },
+      {
+        "tx_hash": "0xfe86b7ac388672d5f5feaf8241e46506a495f97d4fa1c073f1898fa749d4931f",
+        "timestamp": "2026-07-08T06:36:00+00:00",
+        "inputs": [
+          {
+            "address": "0x1a66219ea1d3d3c30d4fd412e16ed3eedbeef10f",
+            "amount": 1.69
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x18b953a32ae09c9fb316899b3c874fdf3d8a88f5",
+            "amount": 1.68
+          }
+        ],
+        "fee": 0.01
+      },
+      {
+        "tx_hash": "0x07fa768a5210a935c9b89274f3459b511bdd4cb976ff29ac5af219ee7a477acf",
+        "timestamp": "2026-07-10T13:48:00+00:00",
+        "inputs": [
+          {
+            "address": "0x1a66219ea1d3d3c30d4fd412e16ed3eedbeef10f",
+            "amount": 0.73
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x7b996dc8e2f5f19a11941f331900272522395a54",
+            "amount": 0.72
+          }
+        ],
+        "fee": 0.01
+      },
+      {
+        "tx_hash": "0xef5715429ad75fa6ab2c76529958fde6f132996a9fefdff6e3a6feb31b9c546e",
+        "timestamp": "2026-07-12T21:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x1a66219ea1d3d3c30d4fd412e16ed3eedbeef10f",
+            "amount": 2.04
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x7fd034df02169966cac96e11859cbbc54fee77dd",
+            "amount": 2.03
+          }
+        ],
+        "fee": 0.01
+      }
+    ],
+    "0xc7fcc67f7288b5858cf1ecdc77b27c61727034c8": [
+      {
+        "tx_hash": "0xd8865758ffe9856ad67208fed938cecad90f04317679587449148b27b9cbeb7f",
+        "timestamp": "2026-06-25T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0xc7fcc67f7288b5858cf1ecdc77b27c61727034c8",
+            "amount": 9.05
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x1a66219ea1d3d3c30d4fd412e16ed3eedbeef10f",
+            "amount": 9.0
+          }
+        ],
+        "fee": 0.05
+      }
+    ],
+    "0x9b12dae9e4f20e2b9b86f8642be1ab5cdc80bdcd": [
+      {
+        "tx_hash": "0x3f8a6ca029e51d040aa06b2a651b865c18ff5bcc739e82faf4afd55eccfbd254",
+        "timestamp": "2026-07-01T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x1a66219ea1d3d3c30d4fd412e16ed3eedbeef10f",
+            "amount": 1.38
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x9b12dae9e4f20e2b9b86f8642be1ab5cdc80bdcd",
+            "amount": 1.37
+          }
+        ],
+        "fee": 0.01
+      },
+      {
+        "tx_hash": "0xa1f36df5751d42f3ba0212710d03ed91322ba4fdfffe90c258267feff8a5e6d8",
+        "timestamp": "2026-07-15T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x9b12dae9e4f20e2b9b86f8642be1ab5cdc80bdcd",
+            "amount": 1.37
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x28C6c06298d514Db089934071355E5743bf21d60",
+            "amount": 1.36
+          }
+        ],
+        "fee": 0.01
+      }
+    ],
+    "0xed55479e7257ebc741f998961447f662d0ac47b7": [
+      {
+        "tx_hash": "0xb3230cf4492e8378857700beea2d73f1303818b2451766d419df8f2a40d6304f",
+        "timestamp": "2026-07-03T16:12:00+00:00",
+        "inputs": [
+          {
+            "address": "0x1a66219ea1d3d3c30d4fd412e16ed3eedbeef10f",
+            "amount": 0.95
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0xed55479e7257ebc741f998961447f662d0ac47b7",
+            "amount": 0.94
+          }
+        ],
+        "fee": 0.01
+      },
+      {
+        "tx_hash": "0xa8dfef9f6ed9b59609165671424d353606f27632fe31f53392fa13377ab937c1",
+        "timestamp": "2026-07-15T09:04:00+00:00",
+        "inputs": [
+          {
+            "address": "0xed55479e7257ebc741f998961447f662d0ac47b7",
+            "amount": 0.94
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x28C6c06298d514Db089934071355E5743bf21d60",
+            "amount": 0.93
+          }
+        ],
+        "fee": 0.01
+      }
+    ],
+    "0xb2431e9bf2b43f97d79ef64ae3f99d7b5a7303c5": [
+      {
+        "tx_hash": "0x9018dec453cbee05d0ae952f0a268e0c10ce3b09c0ceea923113b21e00c94b5d",
+        "timestamp": "2026-07-05T23:24:00+00:00",
+        "inputs": [
+          {
+            "address": "0x1a66219ea1d3d3c30d4fd412e16ed3eedbeef10f",
+            "amount": 2.12
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0xb2431e9bf2b43f97d79ef64ae3f99d7b5a7303c5",
+            "amount": 2.11
+          }
+        ],
+        "fee": 0.01
+      },
+      {
+        "tx_hash": "0x521e9f3ed95dbb151795d33332d6cd265761f00653ce041ba1a149f9b47f5b9b",
+        "timestamp": "2026-07-15T09:08:00+00:00",
+        "inputs": [
+          {
+            "address": "0xb2431e9bf2b43f97d79ef64ae3f99d7b5a7303c5",
+            "amount": 2.11
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x28C6c06298d514Db089934071355E5743bf21d60",
+            "amount": 2.1
+          }
+        ],
+        "fee": 0.01
+      }
+    ],
+    "0x18b953a32ae09c9fb316899b3c874fdf3d8a88f5": [
+      {
+        "tx_hash": "0xfe86b7ac388672d5f5feaf8241e46506a495f97d4fa1c073f1898fa749d4931f",
+        "timestamp": "2026-07-08T06:36:00+00:00",
+        "inputs": [
+          {
+            "address": "0x1a66219ea1d3d3c30d4fd412e16ed3eedbeef10f",
+            "amount": 1.69
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x18b953a32ae09c9fb316899b3c874fdf3d8a88f5",
+            "amount": 1.68
+          }
+        ],
+        "fee": 0.01
+      },
+      {
+        "tx_hash": "0x261ae844641496705a78826075cebc30a2d92197682dc8cf1fbe6e16dbec99fe",
+        "timestamp": "2026-07-15T09:12:00+00:00",
+        "inputs": [
+          {
+            "address": "0x18b953a32ae09c9fb316899b3c874fdf3d8a88f5",
+            "amount": 1.68
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x28C6c06298d514Db089934071355E5743bf21d60",
+            "amount": 1.67
+          }
+        ],
+        "fee": 0.01
+      }
+    ],
+    "0x7b996dc8e2f5f19a11941f331900272522395a54": [
+      {
+        "tx_hash": "0x07fa768a5210a935c9b89274f3459b511bdd4cb976ff29ac5af219ee7a477acf",
+        "timestamp": "2026-07-10T13:48:00+00:00",
+        "inputs": [
+          {
+            "address": "0x1a66219ea1d3d3c30d4fd412e16ed3eedbeef10f",
+            "amount": 0.73
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x7b996dc8e2f5f19a11941f331900272522395a54",
+            "amount": 0.72
+          }
+        ],
+        "fee": 0.01
+      },
+      {
+        "tx_hash": "0x7998024d61b44e6ffa2f9f7346e9a77de9ae10969cc1de4741694a1693f4784d",
+        "timestamp": "2026-07-15T09:16:00+00:00",
+        "inputs": [
+          {
+            "address": "0x7b996dc8e2f5f19a11941f331900272522395a54",
+            "amount": 0.72
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x28C6c06298d514Db089934071355E5743bf21d60",
+            "amount": 0.71
+          }
+        ],
+        "fee": 0.01
+      }
+    ],
+    "0x7fd034df02169966cac96e11859cbbc54fee77dd": [
+      {
+        "tx_hash": "0xef5715429ad75fa6ab2c76529958fde6f132996a9fefdff6e3a6feb31b9c546e",
+        "timestamp": "2026-07-12T21:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x1a66219ea1d3d3c30d4fd412e16ed3eedbeef10f",
+            "amount": 2.04
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x7fd034df02169966cac96e11859cbbc54fee77dd",
+            "amount": 2.03
+          }
+        ],
+        "fee": 0.01
+      },
+      {
+        "tx_hash": "0x1b1429896c5a6fafb0d3f240fea2dd89e3c8efdcc57b4f4b4493390889b3d994",
+        "timestamp": "2026-07-15T09:20:00+00:00",
+        "inputs": [
+          {
+            "address": "0x7fd034df02169966cac96e11859cbbc54fee77dd",
+            "amount": 2.03
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x28C6c06298d514Db089934071355E5743bf21d60",
+            "amount": 2.02
+          }
+        ],
+        "fee": 0.01
+      }
+    ],
+    "0x28C6c06298d514Db089934071355E5743bf21d60": [
+      {
+        "tx_hash": "0xa1f36df5751d42f3ba0212710d03ed91322ba4fdfffe90c258267feff8a5e6d8",
+        "timestamp": "2026-07-15T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x9b12dae9e4f20e2b9b86f8642be1ab5cdc80bdcd",
+            "amount": 1.37
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x28C6c06298d514Db089934071355E5743bf21d60",
+            "amount": 1.36
+          }
+        ],
+        "fee": 0.01
+      },
+      {
+        "tx_hash": "0xa8dfef9f6ed9b59609165671424d353606f27632fe31f53392fa13377ab937c1",
+        "timestamp": "2026-07-15T09:04:00+00:00",
+        "inputs": [
+          {
+            "address": "0xed55479e7257ebc741f998961447f662d0ac47b7",
+            "amount": 0.94
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x28C6c06298d514Db089934071355E5743bf21d60",
+            "amount": 0.93
+          }
+        ],
+        "fee": 0.01
+      },
+      {
+        "tx_hash": "0x521e9f3ed95dbb151795d33332d6cd265761f00653ce041ba1a149f9b47f5b9b",
+        "timestamp": "2026-07-15T09:08:00+00:00",
+        "inputs": [
+          {
+            "address": "0xb2431e9bf2b43f97d79ef64ae3f99d7b5a7303c5",
+            "amount": 2.11
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x28C6c06298d514Db089934071355E5743bf21d60",
+            "amount": 2.1
+          }
+        ],
+        "fee": 0.01
+      },
+      {
+        "tx_hash": "0x261ae844641496705a78826075cebc30a2d92197682dc8cf1fbe6e16dbec99fe",
+        "timestamp": "2026-07-15T09:12:00+00:00",
+        "inputs": [
+          {
+            "address": "0x18b953a32ae09c9fb316899b3c874fdf3d8a88f5",
+            "amount": 1.68
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x28C6c06298d514Db089934071355E5743bf21d60",
+            "amount": 1.67
+          }
+        ],
+        "fee": 0.01
+      },
+      {
+        "tx_hash": "0x7998024d61b44e6ffa2f9f7346e9a77de9ae10969cc1de4741694a1693f4784d",
+        "timestamp": "2026-07-15T09:16:00+00:00",
+        "inputs": [
+          {
+            "address": "0x7b996dc8e2f5f19a11941f331900272522395a54",
+            "amount": 0.72
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x28C6c06298d514Db089934071355E5743bf21d60",
+            "amount": 0.71
+          }
+        ],
+        "fee": 0.01
+      },
+      {
+        "tx_hash": "0x1b1429896c5a6fafb0d3f240fea2dd89e3c8efdcc57b4f4b4493390889b3d994",
+        "timestamp": "2026-07-15T09:20:00+00:00",
+        "inputs": [
+          {
+            "address": "0x7fd034df02169966cac96e11859cbbc54fee77dd",
+            "amount": 2.03
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x28C6c06298d514Db089934071355E5743bf21d60",
+            "amount": 2.02
+          }
+        ],
+        "fee": 0.01
+      }
+    ]
+  }
+}
