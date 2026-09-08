@@ -1,0 +1,217 @@
+{
+  "slug": "fan-out-below-threshold",
+  "title": "Four recipients \u2014 one below the fan-out threshold",
+  "rationale": "The threshold is a definition, not a dial. One recipient short must produce silence, or the threshold means nothing.",
+  "chain": "ethereum",
+  "seed_address": "0x6451b34ab0e41b52d01ffd8e29055ba4129fb41c",
+  "max_hops": 5,
+  "ground_truth_source": "constructed for this evaluation set",
+  "provenance": "synthetic_scenario",
+  "expected": {
+    "patterns_present": [],
+    "patterns_absent": [
+      "cluster_context",
+      "fan_in",
+      "fan_out",
+      "peel_chain",
+      "round_split",
+      "sanctioned_match",
+      "timing_burst"
+    ],
+    "exit_entity_contains": null,
+    "trail_degraded": false
+  },
+  "addresses": {
+    "0x6ec3d241d6ba660428c1956957bc3d31cd25176a": [
+      {
+        "tx_hash": "0x8ad9826bda3679260e629cd21e462d73bb05681f5d06a35c573147aee9536900",
+        "timestamp": "2026-07-12T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x6ec3d241d6ba660428c1956957bc3d31cd25176a",
+            "amount": 4.1
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x6451b34ab0e41b52d01ffd8e29055ba4129fb41c",
+            "amount": 4.0
+          }
+        ],
+        "fee": 0.0
+      }
+    ],
+    "0x6451b34ab0e41b52d01ffd8e29055ba4129fb41c": [
+      {
+        "tx_hash": "0x8ad9826bda3679260e629cd21e462d73bb05681f5d06a35c573147aee9536900",
+        "timestamp": "2026-07-12T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x6ec3d241d6ba660428c1956957bc3d31cd25176a",
+            "amount": 4.1
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x6451b34ab0e41b52d01ffd8e29055ba4129fb41c",
+            "amount": 4.0
+          }
+        ],
+        "fee": 0.0
+      },
+      {
+        "tx_hash": "0x30147f69686495e449379b866827cca89649c4016d8f2ae70274878a7179ae94",
+        "timestamp": "2026-07-15T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x6451b34ab0e41b52d01ffd8e29055ba4129fb41c",
+            "amount": 4.0
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0xa6aa3c1d2dd7455ca8a6a1a58ecbc0dc9e148e60",
+            "amount": 1.13
+          },
+          {
+            "address": "0x2ebce46a7deda5f7b916f251a7e7c2d242abcf2a",
+            "amount": 0.87
+          },
+          {
+            "address": "0xd3c3e540ad8999d3f147f38652f9687ce5fc2af7",
+            "amount": 1.31
+          },
+          {
+            "address": "0x5b57ccd03c6ac552671cca7c46c869b10e86eea5",
+            "amount": 0.64
+          }
+        ],
+        "fee": 0.0
+      }
+    ],
+    "0x5b57ccd03c6ac552671cca7c46c869b10e86eea5": [
+      {
+        "tx_hash": "0x30147f69686495e449379b866827cca89649c4016d8f2ae70274878a7179ae94",
+        "timestamp": "2026-07-15T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x6451b34ab0e41b52d01ffd8e29055ba4129fb41c",
+            "amount": 4.0
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0xa6aa3c1d2dd7455ca8a6a1a58ecbc0dc9e148e60",
+            "amount": 1.13
+          },
+          {
+            "address": "0x2ebce46a7deda5f7b916f251a7e7c2d242abcf2a",
+            "amount": 0.87
+          },
+          {
+            "address": "0xd3c3e540ad8999d3f147f38652f9687ce5fc2af7",
+            "amount": 1.31
+          },
+          {
+            "address": "0x5b57ccd03c6ac552671cca7c46c869b10e86eea5",
+            "amount": 0.64
+          }
+        ],
+        "fee": 0.0
+      }
+    ],
+    "0xd3c3e540ad8999d3f147f38652f9687ce5fc2af7": [
+      {
+        "tx_hash": "0x30147f69686495e449379b866827cca89649c4016d8f2ae70274878a7179ae94",
+        "timestamp": "2026-07-15T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x6451b34ab0e41b52d01ffd8e29055ba4129fb41c",
+            "amount": 4.0
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0xa6aa3c1d2dd7455ca8a6a1a58ecbc0dc9e148e60",
+            "amount": 1.13
+          },
+          {
+            "address": "0x2ebce46a7deda5f7b916f251a7e7c2d242abcf2a",
+            "amount": 0.87
+          },
+          {
+            "address": "0xd3c3e540ad8999d3f147f38652f9687ce5fc2af7",
+            "amount": 1.31
+          },
+          {
+            "address": "0x5b57ccd03c6ac552671cca7c46c869b10e86eea5",
+            "amount": 0.64
+          }
+        ],
+        "fee": 0.0
+      }
+    ],
+    "0x2ebce46a7deda5f7b916f251a7e7c2d242abcf2a": [
+      {
+        "tx_hash": "0x30147f69686495e449379b866827cca89649c4016d8f2ae70274878a7179ae94",
+        "timestamp": "2026-07-15T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x6451b34ab0e41b52d01ffd8e29055ba4129fb41c",
+            "amount": 4.0
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0xa6aa3c1d2dd7455ca8a6a1a58ecbc0dc9e148e60",
+            "amount": 1.13
+          },
+          {
+            "address": "0x2ebce46a7deda5f7b916f251a7e7c2d242abcf2a",
+            "amount": 0.87
+          },
+          {
+            "address": "0xd3c3e540ad8999d3f147f38652f9687ce5fc2af7",
+            "amount": 1.31
+          },
+          {
+            "address": "0x5b57ccd03c6ac552671cca7c46c869b10e86eea5",
+            "amount": 0.64
+          }
+        ],
+        "fee": 0.0
+      }
+    ],
+    "0xa6aa3c1d2dd7455ca8a6a1a58ecbc0dc9e148e60": [
+      {
+        "tx_hash": "0x30147f69686495e449379b866827cca89649c4016d8f2ae70274878a7179ae94",
+        "timestamp": "2026-07-15T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x6451b34ab0e41b52d01ffd8e29055ba4129fb41c",
+            "amount": 4.0
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0xa6aa3c1d2dd7455ca8a6a1a58ecbc0dc9e148e60",
+            "amount": 1.13
+          },
+          {
+            "address": "0x2ebce46a7deda5f7b916f251a7e7c2d242abcf2a",
+            "amount": 0.87
+          },
+          {
+            "address": "0xd3c3e540ad8999d3f147f38652f9687ce5fc2af7",
+            "amount": 1.31
+          },
+          {
+            "address": "0x5b57ccd03c6ac552671cca7c46c869b10e86eea5",
+            "amount": 0.64
+          }
+        ],
+        "fee": 0.0
+      }
+    ]
+  }
+}

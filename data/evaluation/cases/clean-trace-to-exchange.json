@@ -1,0 +1,136 @@
+{
+  "slug": "clean-trace-to-exchange",
+  "title": "Two ordinary hops to a labelled exchange",
+  "rationale": "A trace with no obfuscation shape at all, ending at a real Kraken address. Should score zero and still attribute the exit \u2014 a clean trace is a useful answer, not a failed one.",
+  "chain": "ethereum",
+  "seed_address": "0xd1ada77af2ea55c84c9537e6b5187ac526c94989",
+  "max_hops": 5,
+  "ground_truth_source": "constructed for this evaluation set",
+  "provenance": "synthetic_scenario",
+  "expected": {
+    "patterns_present": [],
+    "patterns_absent": [
+      "cluster_context",
+      "fan_in",
+      "fan_out",
+      "peel_chain",
+      "round_split",
+      "sanctioned_match",
+      "timing_burst"
+    ],
+    "exit_entity_contains": "Kraken",
+    "trail_degraded": false
+  },
+  "addresses": {
+    "0xd1ada77af2ea55c84c9537e6b5187ac526c94989": [
+      {
+        "tx_hash": "0xb0f8baef90eb91efd29b129c276d2ba4fda1664de2640a82f3a49a575d9b6e9a",
+        "timestamp": "2026-07-09T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x445d321137d9a87713df92bedcfc8f1a77f8c770",
+            "amount": 2.51
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0xd1ada77af2ea55c84c9537e6b5187ac526c94989",
+            "amount": 2.5
+          }
+        ],
+        "fee": 0.0
+      },
+      {
+        "tx_hash": "0x5c1807a7f84f9970230ccab175ee631ecf7752c2241b545aff60184c1e4da4fc",
+        "timestamp": "2026-07-11T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0xd1ada77af2ea55c84c9537e6b5187ac526c94989",
+            "amount": 2.5
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0xf3e88e2ae3420d6b03fa392d8f35b9ff6270ae26",
+            "amount": 2.49
+          }
+        ],
+        "fee": 0.0
+      }
+    ],
+    "0x445d321137d9a87713df92bedcfc8f1a77f8c770": [
+      {
+        "tx_hash": "0xb0f8baef90eb91efd29b129c276d2ba4fda1664de2640a82f3a49a575d9b6e9a",
+        "timestamp": "2026-07-09T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x445d321137d9a87713df92bedcfc8f1a77f8c770",
+            "amount": 2.51
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0xd1ada77af2ea55c84c9537e6b5187ac526c94989",
+            "amount": 2.5
+          }
+        ],
+        "fee": 0.0
+      }
+    ],
+    "0xf3e88e2ae3420d6b03fa392d8f35b9ff6270ae26": [
+      {
+        "tx_hash": "0x5c1807a7f84f9970230ccab175ee631ecf7752c2241b545aff60184c1e4da4fc",
+        "timestamp": "2026-07-11T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0xd1ada77af2ea55c84c9537e6b5187ac526c94989",
+            "amount": 2.5
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0xf3e88e2ae3420d6b03fa392d8f35b9ff6270ae26",
+            "amount": 2.49
+          }
+        ],
+        "fee": 0.0
+      },
+      {
+        "tx_hash": "0x340f6424bb3b0611ba00b1f18db1c5123d7f59209c24fde52bacec5987d3209f",
+        "timestamp": "2026-07-13T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0xf3e88e2ae3420d6b03fa392d8f35b9ff6270ae26",
+            "amount": 2.49
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x2910543Af39abA0Cd09dBb2D50200b3E800A63D2",
+            "amount": 2.48
+          }
+        ],
+        "fee": 0.0
+      }
+    ],
+    "0x2910543Af39abA0Cd09dBb2D50200b3E800A63D2": [
+      {
+        "tx_hash": "0x340f6424bb3b0611ba00b1f18db1c5123d7f59209c24fde52bacec5987d3209f",
+        "timestamp": "2026-07-13T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0xf3e88e2ae3420d6b03fa392d8f35b9ff6270ae26",
+            "amount": 2.49
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x2910543Af39abA0Cd09dBb2D50200b3E800A63D2",
+            "amount": 2.48
+          }
+        ],
+        "fee": 0.0
+      }
+    ]
+  }
+}

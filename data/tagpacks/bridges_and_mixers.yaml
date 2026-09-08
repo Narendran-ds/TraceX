@@ -42,3 +42,46 @@ tags:
     category: bridge
     source: https://etherscan.io/address/0xA0c68C638235ee32657e8f720a23ceC1bFc77C77
     confidence: 0.85
+
+  # Tornado Cash. These addresses carry TWO independent public facts, from two
+  # different sources: OFAC designated them (data/ofac/), and they are a mixing
+  # service (here). Both matter and neither implies the other — a sanctioned
+  # personal wallet is still traceable onward, while a mixing service is a
+  # confidence boundary regardless of whether anyone has sanctioned it. Without
+  # the mixer tag the trail would be reported as if it could continue past an
+  # anonymity set, which is exactly the false certainty this project refuses.
+  - address: "0x8589427373D6D84E98730D7795D8f6f8731FDA16"
+    label: Tornado Cash
+    category: mixing_service
+    source: https://etherscan.io/address/0x8589427373D6D84E98730D7795D8f6f8731FDA16
+    confidence: 0.95
+
+  - address: "0x722122dF12D4e14e13Ac3b6895a86e84145b6967"
+    label: Tornado Cash
+    category: mixing_service
+    source: https://etherscan.io/address/0x722122dF12D4e14e13Ac3b6895a86e84145b6967
+    confidence: 0.95
+
+  - address: "0xDD4c48C0B24039969fC16D1cdF626eaB821d3384"
+    label: Tornado Cash
+    category: mixing_service
+    source: https://etherscan.io/address/0xDD4c48C0B24039969fC16D1cdF626eaB821d3384
+    confidence: 0.95
+
+  - address: "0x12D66f87A04A9E220743712cE6d9bB1B5616B8Fc"
+    label: Tornado Cash
+    category: mixing_service
+    source: https://etherscan.io/address/0x12D66f87A04A9E220743712cE6d9bB1B5616B8Fc
+    confidence: 0.95
+
+  - address: "0x910Cbd523D972eb0a6f4cAe4618aD62622b39DbF"
+    label: Tornado Cash
+    category: mixing_service
+    source: https://etherscan.io/address/0x910Cbd523D972eb0a6f4cAe4618aD62622b39DbF
+    confidence: 0.95
+
+  - address: "0xA160cdAB225685dA1d56aa342Ad8841c3b53f291"
+    label: Tornado Cash
+    category: mixing_service
+    source: https://etherscan.io/address/0xA160cdAB225685dA1d56aa342Ad8841c3b53f291
+    confidence: 0.95

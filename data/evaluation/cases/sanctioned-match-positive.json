@@ -1,0 +1,134 @@
+{
+  "slug": "sanctioned-match-positive",
+  "title": "Trail reaches an OFAC-designated address",
+  "rationale": "The destination is a real Tornado Cash address on the OFAC SDN list. A mixer is also a confidence boundary, so this case asserts both the attribution hit and the trail degradation that must come with it.",
+  "chain": "ethereum",
+  "seed_address": "0x7c2f86defff00194b2b0d551903419d44c65d965",
+  "max_hops": 5,
+  "ground_truth_source": "constructed for this evaluation set",
+  "provenance": "synthetic_scenario",
+  "expected": {
+    "patterns_present": [
+      "sanctioned_match"
+    ],
+    "patterns_absent": [
+      "fan_in",
+      "fan_out",
+      "round_split"
+    ],
+    "exit_entity_contains": "TORNADO",
+    "trail_degraded": true
+  },
+  "addresses": {
+    "0x2b1b6d50e0ebda4d3c40ab45a7bd233e4b7d5e3e": [
+      {
+        "tx_hash": "0xf9c653a325e94cb788340349bfdbb4fca1b4f73d94edd68d211c12019d4a6875",
+        "timestamp": "2026-07-13T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x2b1b6d50e0ebda4d3c40ab45a7bd233e4b7d5e3e",
+            "amount": 3.1
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x7c2f86defff00194b2b0d551903419d44c65d965",
+            "amount": 3.0
+          }
+        ],
+        "fee": 0.0
+      }
+    ],
+    "0x7c2f86defff00194b2b0d551903419d44c65d965": [
+      {
+        "tx_hash": "0xf9c653a325e94cb788340349bfdbb4fca1b4f73d94edd68d211c12019d4a6875",
+        "timestamp": "2026-07-13T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x2b1b6d50e0ebda4d3c40ab45a7bd233e4b7d5e3e",
+            "amount": 3.1
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x7c2f86defff00194b2b0d551903419d44c65d965",
+            "amount": 3.0
+          }
+        ],
+        "fee": 0.0
+      },
+      {
+        "tx_hash": "0xf665f210d47306655a5a8323473827503d1bacfbe78dfefc65faa1ed0d587a90",
+        "timestamp": "2026-07-15T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x7c2f86defff00194b2b0d551903419d44c65d965",
+            "amount": 3.0
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x9963048f6c8382dda449e4969232e4a4150ad3ce",
+            "amount": 2.99
+          }
+        ],
+        "fee": 0.0
+      }
+    ],
+    "0x9963048f6c8382dda449e4969232e4a4150ad3ce": [
+      {
+        "tx_hash": "0xf665f210d47306655a5a8323473827503d1bacfbe78dfefc65faa1ed0d587a90",
+        "timestamp": "2026-07-15T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x7c2f86defff00194b2b0d551903419d44c65d965",
+            "amount": 3.0
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x9963048f6c8382dda449e4969232e4a4150ad3ce",
+            "amount": 2.99
+          }
+        ],
+        "fee": 0.0
+      },
+      {
+        "tx_hash": "0x37def30e40cac66d19be23162637b0627145e621bd2429ba34d7ca93ea071d9c",
+        "timestamp": "2026-07-15T10:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x9963048f6c8382dda449e4969232e4a4150ad3ce",
+            "amount": 2.99
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x8589427373D6D84E98730D7795D8f6f8731FDA16",
+            "amount": 2.98
+          }
+        ],
+        "fee": 0.0
+      }
+    ],
+    "0x8589427373D6D84E98730D7795D8f6f8731FDA16": [
+      {
+        "tx_hash": "0x37def30e40cac66d19be23162637b0627145e621bd2429ba34d7ca93ea071d9c",
+        "timestamp": "2026-07-15T10:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x9963048f6c8382dda449e4969232e4a4150ad3ce",
+            "amount": 2.99
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x8589427373D6D84E98730D7795D8f6f8731FDA16",
+            "amount": 2.98
+          }
+        ],
+        "fee": 0.0
+      }
+    ]
+  }
+}

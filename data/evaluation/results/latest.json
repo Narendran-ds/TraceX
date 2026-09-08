@@ -1,0 +1,964 @@
+{
+  "summary": {
+    "generated_at": "2026-09-08T11:30:36+00:00",
+    "case_count": 16,
+    "set_composition": {
+      "constructed_scenarios": 16,
+      "documented_real_cases": 0
+    },
+    "cases_fully_correct": 16,
+    "pattern_detection": {
+      "true_positives": 13,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "true_negatives": 64,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    "attribution": {
+      "cases_expecting_a_named_exit": 5,
+      "correct_exit_in_top_3": 5
+    },
+    "trail_degradation": {
+      "cases": 16,
+      "correct": 16
+    },
+    "timing": {
+      "total_seconds": 0.121,
+      "median_seconds": 0.0073,
+      "max_seconds": 0.009,
+      "manual_baseline_seconds": null,
+      "manual_baseline_note": "Not measured. Stopwatch a manual trace of the same case by hand and record it here before any time comparison is presented."
+    },
+    "graph_scale": {
+      "total_wallets": 114,
+      "total_transactions": 72,
+      "max_wallets_in_one_case": 17
+    }
+  },
+  "cases": [
+    {
+      "slug": "bridge-dead-end",
+      "title": "Trail reaches a cross-chain bridge",
+      "ground_truth_source": "constructed for this evaluation set",
+      "provenance": "synthetic_scenario",
+      "elapsed_seconds": 0.0085,
+      "graph": {
+        "wallets": 5,
+        "transactions": 4,
+        "clusters": 3,
+        "hops": 2
+      },
+      "score": 0.0,
+      "risk_level": "NONE",
+      "patterns": {
+        "expected_present": [],
+        "expected_absent": [
+          "sanctioned_match"
+        ],
+        "detected": [],
+        "true_positives": [],
+        "false_negatives": [],
+        "false_positives": [],
+        "true_negatives": [
+          "sanctioned_match"
+        ]
+      },
+      "attribution": {
+        "expected_entity": "Wormhole",
+        "ok": true,
+        "note": "Wormhole Token Bridge in top-3",
+        "top_three": [
+          {
+            "entity": "Wormhole Token Bridge",
+            "confidence": 0.6502
+          }
+        ]
+      },
+      "trail_degraded": {
+        "expected": true,
+        "actual": true,
+        "ok": true
+      },
+      "suppressed_signals": [],
+      "passed": true
+    },
+    {
+      "slug": "clean-trace-to-exchange",
+      "title": "Two ordinary hops to a labelled exchange",
+      "ground_truth_source": "constructed for this evaluation set",
+      "provenance": "synthetic_scenario",
+      "elapsed_seconds": 0.0085,
+      "graph": {
+        "wallets": 3,
+        "transactions": 2,
+        "clusters": 3,
+        "hops": 2
+      },
+      "score": 0.0,
+      "risk_level": "NONE",
+      "patterns": {
+        "expected_present": [],
+        "expected_absent": [
+          "cluster_context",
+          "fan_in",
+          "fan_out",
+          "peel_chain",
+          "round_split",
+          "sanctioned_match",
+          "timing_burst"
+        ],
+        "detected": [],
+        "true_positives": [],
+        "false_negatives": [],
+        "false_positives": [],
+        "true_negatives": [
+          "cluster_context",
+          "fan_in",
+          "fan_out",
+          "peel_chain",
+          "round_split",
+          "sanctioned_match",
+          "timing_burst"
+        ]
+      },
+      "attribution": {
+        "expected_entity": "Kraken",
+        "ok": true,
+        "note": "Kraken in top-3",
+        "top_three": [
+          {
+            "entity": "Kraken",
+            "confidence": 0.6502
+          }
+        ]
+      },
+      "trail_degraded": {
+        "expected": false,
+        "actual": false,
+        "ok": true
+      },
+      "suppressed_signals": [],
+      "passed": true
+    },
+    {
+      "slug": "even-splits-not-a-peel-chain",
+      "title": "Repeated 50/50 splits",
+      "ground_truth_source": "constructed for this evaluation set",
+      "provenance": "synthetic_scenario",
+      "elapsed_seconds": 0.0085,
+      "graph": {
+        "wallets": 9,
+        "transactions": 4,
+        "clusters": 5,
+        "hops": 4
+      },
+      "score": 0.0,
+      "risk_level": "NONE",
+      "patterns": {
+        "expected_present": [],
+        "expected_absent": [
+          "peel_chain"
+        ],
+        "detected": [],
+        "true_positives": [],
+        "false_negatives": [],
+        "false_positives": [],
+        "true_negatives": [
+          "peel_chain"
+        ]
+      },
+      "attribution": {
+        "expected_entity": null,
+        "ok": true,
+        "note": "no exit named (as expected)",
+        "top_three": [
+          {
+            "entity": null,
+            "confidence": 0.1436
+          }
+        ]
+      },
+      "trail_degraded": {
+        "expected": false,
+        "actual": false,
+        "ok": true
+      },
+      "suppressed_signals": [],
+      "passed": true
+    },
+    {
+      "slug": "fan-in-positive",
+      "title": "Five addresses converge on an unattributed collector",
+      "ground_truth_source": "constructed for this evaluation set",
+      "provenance": "synthetic_scenario",
+      "elapsed_seconds": 0.008,
+      "graph": {
+        "wallets": 7,
+        "transactions": 6,
+        "clusters": 3,
+        "hops": 2
+      },
+      "score": 35.0,
+      "risk_level": "LOW",
+      "patterns": {
+        "expected_present": [
+          "fan_in"
+        ],
+        "expected_absent": [
+          "peel_chain",
+          "round_split",
+          "sanctioned_match"
+        ],
+        "detected": [
+          "fan_in",
+          "fan_out"
+        ],
+        "true_positives": [
+          "fan_in"
+        ],
+        "false_negatives": [],
+        "false_positives": [],
+        "true_negatives": [
+          "peel_chain",
+          "round_split",
+          "sanctioned_match"
+        ]
+      },
+      "attribution": {
+        "expected_entity": null,
+        "ok": true,
+        "note": "no exit named (as expected)",
+        "top_three": [
+          {
+            "entity": null,
+            "confidence": 0.3612
+          }
+        ]
+      },
+      "trail_degraded": {
+        "expected": false,
+        "actual": false,
+        "ok": true
+      },
+      "suppressed_signals": [],
+      "passed": true
+    },
+    {
+      "slug": "fan-out-below-threshold",
+      "title": "Four recipients \u2014 one below the fan-out threshold",
+      "ground_truth_source": "constructed for this evaluation set",
+      "provenance": "synthetic_scenario",
+      "elapsed_seconds": 0.0061,
+      "graph": {
+        "wallets": 5,
+        "transactions": 1,
+        "clusters": 2,
+        "hops": 1
+      },
+      "score": 0.0,
+      "risk_level": "NONE",
+      "patterns": {
+        "expected_present": [],
+        "expected_absent": [
+          "cluster_context",
+          "fan_in",
+          "fan_out",
+          "peel_chain",
+          "round_split",
+          "sanctioned_match",
+          "timing_burst"
+        ],
+        "detected": [],
+        "true_positives": [],
+        "false_negatives": [],
+        "false_positives": [],
+        "true_negatives": [
+          "cluster_context",
+          "fan_in",
+          "fan_out",
+          "peel_chain",
+          "round_split",
+          "sanctioned_match",
+          "timing_burst"
+        ]
+      },
+      "attribution": {
+        "expected_entity": null,
+        "ok": true,
+        "note": "no exit named (as expected)",
+        "top_three": [
+          {
+            "entity": null,
+            "confidence": 0.2338
+          }
+        ]
+      },
+      "trail_degraded": {
+        "expected": false,
+        "actual": false,
+        "ok": true
+      },
+      "suppressed_signals": [],
+      "passed": true
+    },
+    {
+      "slug": "fan-out-outside-window",
+      "title": "Seven recipients spread over two weeks",
+      "ground_truth_source": "constructed for this evaluation set",
+      "provenance": "synthetic_scenario",
+      "elapsed_seconds": 0.0072,
+      "graph": {
+        "wallets": 8,
+        "transactions": 7,
+        "clusters": 8,
+        "hops": 1
+      },
+      "score": 0.0,
+      "risk_level": "NONE",
+      "patterns": {
+        "expected_present": [],
+        "expected_absent": [
+          "cluster_context",
+          "fan_in",
+          "fan_out",
+          "peel_chain",
+          "round_split",
+          "sanctioned_match",
+          "timing_burst"
+        ],
+        "detected": [],
+        "true_positives": [],
+        "false_negatives": [],
+        "false_positives": [],
+        "true_negatives": [
+          "cluster_context",
+          "fan_in",
+          "fan_out",
+          "peel_chain",
+          "round_split",
+          "sanctioned_match",
+          "timing_burst"
+        ]
+      },
+      "attribution": {
+        "expected_entity": null,
+        "ok": true,
+        "note": "no exit named (as expected)",
+        "top_three": [
+          {
+            "entity": null,
+            "confidence": 0.425
+          },
+          {
+            "entity": null,
+            "confidence": 0.425
+          },
+          {
+            "entity": null,
+            "confidence": 0.425
+          }
+        ]
+      },
+      "trail_degraded": {
+        "expected": false,
+        "actual": false,
+        "ok": true
+      },
+      "suppressed_signals": [],
+      "passed": true
+    },
+    {
+      "slug": "fan-out-positive",
+      "title": "Rapid fan-out into six previously-unseen addresses",
+      "ground_truth_source": "constructed for this evaluation set",
+      "provenance": "synthetic_scenario",
+      "elapsed_seconds": 0.007,
+      "graph": {
+        "wallets": 7,
+        "transactions": 1,
+        "clusters": 2,
+        "hops": 1
+      },
+      "score": 20.0,
+      "risk_level": "LOW",
+      "patterns": {
+        "expected_present": [
+          "fan_out"
+        ],
+        "expected_absent": [
+          "cluster_context",
+          "fan_in",
+          "peel_chain",
+          "round_split",
+          "sanctioned_match",
+          "timing_burst"
+        ],
+        "detected": [
+          "fan_out"
+        ],
+        "true_positives": [
+          "fan_out"
+        ],
+        "false_negatives": [],
+        "false_positives": [],
+        "true_negatives": [
+          "cluster_context",
+          "fan_in",
+          "peel_chain",
+          "round_split",
+          "sanctioned_match",
+          "timing_burst"
+        ]
+      },
+      "attribution": {
+        "expected_entity": null,
+        "ok": true,
+        "note": "no exit named (as expected)",
+        "top_three": [
+          {
+            "entity": null,
+            "confidence": 0.2338
+          }
+        ]
+      },
+      "trail_degraded": {
+        "expected": false,
+        "actual": false,
+        "ok": true
+      },
+      "suppressed_signals": [],
+      "passed": true
+    },
+    {
+      "slug": "full-laundering-chain",
+      "title": "Fan-out, peel chain, burst, consolidation, exchange deposit",
+      "ground_truth_source": "constructed for this evaluation set",
+      "provenance": "synthetic_scenario",
+      "elapsed_seconds": 0.009,
+      "graph": {
+        "wallets": 17,
+        "transactions": 11,
+        "clusters": 8,
+        "hops": 5
+      },
+      "score": 97.0,
+      "risk_level": "HIGH",
+      "patterns": {
+        "expected_present": [
+          "cluster_context",
+          "fan_in",
+          "fan_out",
+          "peel_chain",
+          "round_split",
+          "timing_burst"
+        ],
+        "expected_absent": [
+          "sanctioned_match"
+        ],
+        "detected": [
+          "cluster_context",
+          "fan_in",
+          "fan_out",
+          "peel_chain",
+          "round_split",
+          "timing_burst"
+        ],
+        "true_positives": [
+          "cluster_context",
+          "fan_in",
+          "fan_out",
+          "peel_chain",
+          "round_split",
+          "timing_burst"
+        ],
+        "false_negatives": [],
+        "false_positives": [],
+        "true_negatives": [
+          "sanctioned_match"
+        ]
+      },
+      "attribution": {
+        "expected_entity": "Binance",
+        "ok": true,
+        "note": "Binance in top-3",
+        "top_three": [
+          {
+            "entity": "Binance",
+            "confidence": 0.5527
+          },
+          {
+            "entity": null,
+            "confidence": 0.122
+          }
+        ]
+      },
+      "trail_degraded": {
+        "expected": false,
+        "actual": false,
+        "ok": true
+      },
+      "suppressed_signals": [],
+      "passed": true
+    },
+    {
+      "slug": "legitimate-exchange-consolidation",
+      "title": "Six unrelated addresses deposit at a real exchange",
+      "ground_truth_source": "constructed for this evaluation set",
+      "provenance": "synthetic_scenario",
+      "elapsed_seconds": 0.0071,
+      "graph": {
+        "wallets": 8,
+        "transactions": 12,
+        "clusters": 8,
+        "hops": 2
+      },
+      "score": 0.0,
+      "risk_level": "NONE",
+      "patterns": {
+        "expected_present": [],
+        "expected_absent": [
+          "cluster_context",
+          "fan_in",
+          "fan_out",
+          "peel_chain",
+          "round_split",
+          "sanctioned_match",
+          "timing_burst"
+        ],
+        "detected": [],
+        "true_positives": [],
+        "false_negatives": [],
+        "false_positives": [],
+        "true_negatives": [
+          "cluster_context",
+          "fan_in",
+          "fan_out",
+          "peel_chain",
+          "round_split",
+          "sanctioned_match",
+          "timing_burst"
+        ]
+      },
+      "attribution": {
+        "expected_entity": "Binance",
+        "ok": true,
+        "note": "Binance in top-3",
+        "top_three": [
+          {
+            "entity": "Binance",
+            "confidence": 0.6502
+          }
+        ]
+      },
+      "trail_degraded": {
+        "expected": false,
+        "actual": false,
+        "ok": true
+      },
+      "suppressed_signals": [
+        {
+          "pattern": "fan_in",
+          "reason": "Not reported as suspicious: the destination is attributed to Binance, so this convergence is consistent with ordinary deposit consolidation."
+        }
+      ],
+      "passed": true
+    },
+    {
+      "slug": "peel-chain-positive",
+      "title": "Four-hop peel chain",
+      "ground_truth_source": "constructed for this evaluation set",
+      "provenance": "synthetic_scenario",
+      "elapsed_seconds": 0.0065,
+      "graph": {
+        "wallets": 9,
+        "transactions": 4,
+        "clusters": 5,
+        "hops": 4
+      },
+      "score": 20.0,
+      "risk_level": "LOW",
+      "patterns": {
+        "expected_present": [
+          "peel_chain"
+        ],
+        "expected_absent": [
+          "fan_in",
+          "round_split",
+          "sanctioned_match"
+        ],
+        "detected": [
+          "peel_chain"
+        ],
+        "true_positives": [
+          "peel_chain"
+        ],
+        "false_negatives": [],
+        "false_positives": [],
+        "true_negatives": [
+          "fan_in",
+          "round_split",
+          "sanctioned_match"
+        ]
+      },
+      "attribution": {
+        "expected_entity": null,
+        "ok": true,
+        "note": "no exit named (as expected)",
+        "top_three": [
+          {
+            "entity": null,
+            "confidence": 0.1436
+          }
+        ]
+      },
+      "trail_degraded": {
+        "expected": false,
+        "actual": false,
+        "ok": true
+      },
+      "suppressed_signals": [],
+      "passed": true
+    },
+    {
+      "slug": "round-split-positive",
+      "title": "Split into four equal 2.0 parts",
+      "ground_truth_source": "constructed for this evaluation set",
+      "provenance": "synthetic_scenario",
+      "elapsed_seconds": 0.0071,
+      "graph": {
+        "wallets": 5,
+        "transactions": 1,
+        "clusters": 2,
+        "hops": 1
+      },
+      "score": 15.0,
+      "risk_level": "LOW",
+      "patterns": {
+        "expected_present": [
+          "round_split"
+        ],
+        "expected_absent": [
+          "fan_in",
+          "fan_out",
+          "peel_chain",
+          "sanctioned_match"
+        ],
+        "detected": [
+          "round_split"
+        ],
+        "true_positives": [
+          "round_split"
+        ],
+        "false_negatives": [],
+        "false_positives": [],
+        "true_negatives": [
+          "fan_in",
+          "fan_out",
+          "peel_chain",
+          "sanctioned_match"
+        ]
+      },
+      "attribution": {
+        "expected_entity": null,
+        "ok": true,
+        "note": "no exit named (as expected)",
+        "top_three": [
+          {
+            "entity": null,
+            "confidence": 0.2338
+          }
+        ]
+      },
+      "trail_degraded": {
+        "expected": false,
+        "actual": false,
+        "ok": true
+      },
+      "suppressed_signals": [],
+      "passed": true
+    },
+    {
+      "slug": "sanctioned-match-positive",
+      "title": "Trail reaches an OFAC-designated address",
+      "ground_truth_source": "constructed for this evaluation set",
+      "provenance": "synthetic_scenario",
+      "elapsed_seconds": 0.0067,
+      "graph": {
+        "wallets": 3,
+        "transactions": 2,
+        "clusters": 3,
+        "hops": 2
+      },
+      "score": 20.0,
+      "risk_level": "LOW",
+      "patterns": {
+        "expected_present": [
+          "sanctioned_match"
+        ],
+        "expected_absent": [
+          "fan_in",
+          "fan_out",
+          "round_split"
+        ],
+        "detected": [
+          "sanctioned_match"
+        ],
+        "true_positives": [
+          "sanctioned_match"
+        ],
+        "false_negatives": [],
+        "false_positives": [],
+        "true_negatives": [
+          "fan_in",
+          "fan_out",
+          "round_split"
+        ]
+      },
+      "attribution": {
+        "expected_entity": "TORNADO",
+        "ok": true,
+        "note": "TORNADO CASH in top-3",
+        "top_three": [
+          {
+            "entity": "TORNADO CASH",
+            "confidence": 0.7225
+          }
+        ]
+      },
+      "trail_degraded": {
+        "expected": true,
+        "actual": true,
+        "ok": true
+      },
+      "suppressed_signals": [],
+      "passed": true
+    },
+    {
+      "slug": "single-transaction-not-a-burst",
+      "title": "One transaction with eight outputs",
+      "ground_truth_source": "constructed for this evaluation set",
+      "provenance": "synthetic_scenario",
+      "elapsed_seconds": 0.0078,
+      "graph": {
+        "wallets": 9,
+        "transactions": 1,
+        "clusters": 2,
+        "hops": 1
+      },
+      "score": 20.0,
+      "risk_level": "LOW",
+      "patterns": {
+        "expected_present": [
+          "fan_out"
+        ],
+        "expected_absent": [
+          "peel_chain",
+          "sanctioned_match",
+          "timing_burst"
+        ],
+        "detected": [
+          "fan_out"
+        ],
+        "true_positives": [
+          "fan_out"
+        ],
+        "false_negatives": [],
+        "false_positives": [],
+        "true_negatives": [
+          "peel_chain",
+          "sanctioned_match",
+          "timing_burst"
+        ]
+      },
+      "attribution": {
+        "expected_entity": null,
+        "ok": true,
+        "note": "no exit named (as expected)",
+        "top_three": [
+          {
+            "entity": null,
+            "confidence": 0.2338
+          }
+        ]
+      },
+      "trail_degraded": {
+        "expected": false,
+        "actual": false,
+        "ok": true
+      },
+      "suppressed_signals": [],
+      "passed": true
+    },
+    {
+      "slug": "timing-burst-positive",
+      "title": "Six transactions from one cluster inside nine minutes",
+      "ground_truth_source": "constructed for this evaluation set",
+      "provenance": "synthetic_scenario",
+      "elapsed_seconds": 0.0081,
+      "graph": {
+        "wallets": 8,
+        "transactions": 7,
+        "clusters": 3,
+        "hops": 2
+      },
+      "score": 47.0,
+      "risk_level": "MEDIUM",
+      "patterns": {
+        "expected_present": [
+          "timing_burst"
+        ],
+        "expected_absent": [
+          "peel_chain",
+          "round_split",
+          "sanctioned_match"
+        ],
+        "detected": [
+          "cluster_context",
+          "fan_out",
+          "timing_burst"
+        ],
+        "true_positives": [
+          "timing_burst"
+        ],
+        "false_negatives": [],
+        "false_positives": [],
+        "true_negatives": [
+          "peel_chain",
+          "round_split",
+          "sanctioned_match"
+        ]
+      },
+      "attribution": {
+        "expected_entity": null,
+        "ok": true,
+        "note": "no exit named (as expected)",
+        "top_three": [
+          {
+            "entity": null,
+            "confidence": 0.1987
+          }
+        ]
+      },
+      "trail_degraded": {
+        "expected": false,
+        "actual": false,
+        "ok": true
+      },
+      "suppressed_signals": [],
+      "passed": true
+    },
+    {
+      "slug": "timing-spread-not-a-burst",
+      "title": "Six transactions spread over nine days",
+      "ground_truth_source": "constructed for this evaluation set",
+      "provenance": "synthetic_scenario",
+      "elapsed_seconds": 0.0074,
+      "graph": {
+        "wallets": 8,
+        "transactions": 7,
+        "clusters": 8,
+        "hops": 2
+      },
+      "score": 0.0,
+      "risk_level": "NONE",
+      "patterns": {
+        "expected_present": [],
+        "expected_absent": [
+          "timing_burst"
+        ],
+        "detected": [],
+        "true_positives": [],
+        "false_negatives": [],
+        "false_positives": [],
+        "true_negatives": [
+          "timing_burst"
+        ]
+      },
+      "attribution": {
+        "expected_entity": null,
+        "ok": true,
+        "note": "no exit named (as expected)",
+        "top_three": [
+          {
+            "entity": null,
+            "confidence": 0.3612
+          },
+          {
+            "entity": null,
+            "confidence": 0.3612
+          },
+          {
+            "entity": null,
+            "confidence": 0.3612
+          }
+        ]
+      },
+      "trail_degraded": {
+        "expected": false,
+        "actual": false,
+        "ok": true
+      },
+      "suppressed_signals": [],
+      "passed": true
+    },
+    {
+      "slug": "unattributed-exit-cluster",
+      "title": "Trail ends at an address in no attribution source",
+      "ground_truth_source": "constructed for this evaluation set",
+      "provenance": "synthetic_scenario",
+      "elapsed_seconds": 0.0072,
+      "graph": {
+        "wallets": 3,
+        "transactions": 2,
+        "clusters": 3,
+        "hops": 2
+      },
+      "score": 0.0,
+      "risk_level": "NONE",
+      "patterns": {
+        "expected_present": [],
+        "expected_absent": [
+          "cluster_context",
+          "fan_in",
+          "fan_out",
+          "peel_chain",
+          "round_split",
+          "sanctioned_match",
+          "timing_burst"
+        ],
+        "detected": [],
+        "true_positives": [],
+        "false_negatives": [],
+        "false_positives": [],
+        "true_negatives": [
+          "cluster_context",
+          "fan_in",
+          "fan_out",
+          "peel_chain",
+          "round_split",
+          "sanctioned_match",
+          "timing_burst"
+        ]
+      },
+      "attribution": {
+        "expected_entity": null,
+        "ok": true,
+        "note": "no exit named (as expected)",
+        "top_three": [
+          {
+            "entity": null,
+            "confidence": 0.3612
+          }
+        ]
+      },
+      "trail_degraded": {
+        "expected": false,
+        "actual": false,
+        "ok": true
+      },
+      "suppressed_signals": [],
+      "passed": true
+    }
+  ]
+}

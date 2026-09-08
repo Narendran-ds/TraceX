@@ -1,0 +1,136 @@
+{
+  "slug": "unattributed-exit-cluster",
+  "title": "Trail ends at an address in no attribution source",
+  "rationale": "The exit must be reported as unattributed, never upgraded to a probable name. Tests the refusal to guess.",
+  "chain": "ethereum",
+  "seed_address": "0x66b5c17b5c7deb199941a2a65fc5d9ab7263b9ed",
+  "max_hops": 5,
+  "ground_truth_source": "constructed for this evaluation set",
+  "provenance": "synthetic_scenario",
+  "expected": {
+    "patterns_present": [],
+    "patterns_absent": [
+      "cluster_context",
+      "fan_in",
+      "fan_out",
+      "peel_chain",
+      "round_split",
+      "sanctioned_match",
+      "timing_burst"
+    ],
+    "exit_entity_contains": null,
+    "trail_degraded": false
+  },
+  "addresses": {
+    "0x66b5c17b5c7deb199941a2a65fc5d9ab7263b9ed": [
+      {
+        "tx_hash": "0xc942035dd2f6cf518fe252588dbf04305a06f7565a971407506d4c076bf8bd59",
+        "timestamp": "2026-07-11T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0xfc61f639253ea3f7ad292d01d28ae8435a57abb7",
+            "amount": 4.1
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x66b5c17b5c7deb199941a2a65fc5d9ab7263b9ed",
+            "amount": 4.0
+          }
+        ],
+        "fee": 0.0
+      },
+      {
+        "tx_hash": "0xc5f6f7700115c3fad0a69de3b90cad6946f91430e460baddabe1ec1ac1106ded",
+        "timestamp": "2026-07-13T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x66b5c17b5c7deb199941a2a65fc5d9ab7263b9ed",
+            "amount": 4.0
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x17b9456c02d7ee62b6e6c1bacc960a66955bacf1",
+            "amount": 3.99
+          }
+        ],
+        "fee": 0.0
+      }
+    ],
+    "0xfc61f639253ea3f7ad292d01d28ae8435a57abb7": [
+      {
+        "tx_hash": "0xc942035dd2f6cf518fe252588dbf04305a06f7565a971407506d4c076bf8bd59",
+        "timestamp": "2026-07-11T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0xfc61f639253ea3f7ad292d01d28ae8435a57abb7",
+            "amount": 4.1
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x66b5c17b5c7deb199941a2a65fc5d9ab7263b9ed",
+            "amount": 4.0
+          }
+        ],
+        "fee": 0.0
+      }
+    ],
+    "0x17b9456c02d7ee62b6e6c1bacc960a66955bacf1": [
+      {
+        "tx_hash": "0xc5f6f7700115c3fad0a69de3b90cad6946f91430e460baddabe1ec1ac1106ded",
+        "timestamp": "2026-07-13T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x66b5c17b5c7deb199941a2a65fc5d9ab7263b9ed",
+            "amount": 4.0
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x17b9456c02d7ee62b6e6c1bacc960a66955bacf1",
+            "amount": 3.99
+          }
+        ],
+        "fee": 0.0
+      },
+      {
+        "tx_hash": "0x8b9c50dad46c9d0186270bf046a1fdc047ee7ed6ada3461fc6be8ddfd5e98918",
+        "timestamp": "2026-07-15T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x17b9456c02d7ee62b6e6c1bacc960a66955bacf1",
+            "amount": 3.99
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x0306cb644204981599940623c9caf4d5d8d36d96",
+            "amount": 3.98
+          }
+        ],
+        "fee": 0.0
+      }
+    ],
+    "0x0306cb644204981599940623c9caf4d5d8d36d96": [
+      {
+        "tx_hash": "0x8b9c50dad46c9d0186270bf046a1fdc047ee7ed6ada3461fc6be8ddfd5e98918",
+        "timestamp": "2026-07-15T09:00:00+00:00",
+        "inputs": [
+          {
+            "address": "0x17b9456c02d7ee62b6e6c1bacc960a66955bacf1",
+            "amount": 3.99
+          }
+        ],
+        "outputs": [
+          {
+            "address": "0x0306cb644204981599940623c9caf4d5d8d36d96",
+            "amount": 3.98
+          }
+        ],
+        "fee": 0.0
+      }
+    ]
+  }
+}

@@ -21,16 +21,10 @@ from backend.config import (
     ROUND_SPLIT_MIN_PARTS,
     ROUND_SPLIT_WINDOW_SECONDS,
 )
+from backend.amounts import is_round_amount
 from backend.patterns.base import Detection, DetectionContext, short
 
 
-def is_round_amount(amount: float, tolerance: float = 1e-9) -> bool:
-    """A tidy figure: a whole unit, or a clean tenth/hundredth/thousandth."""
-    for unit in (1.0, 0.1, 0.01, 0.001):
-        scaled = amount / unit
-        if abs(scaled - round(scaled)) < tolerance and round(scaled) != 0:
-            return True
-    return False
 
 
 def _near_equal(amounts: List[float]) -> bool:

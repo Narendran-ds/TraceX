@@ -85,6 +85,10 @@ export function TrailGraph({
   const containerRef = useRef<HTMLDivElement>(null);
   const graphRef = useRef<any>(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
+  // Mirrored in a ref so the fit callback can stay stable and still read the
+  // current panel size.
+  const sizeRef = useRef(size);
+  sizeRef.current = size;
   const [hovered, setHovered] = useState<string | null>(null);
   const [dimOffTrail, setDimOffTrail] = useState(true);
   const reducedMotion = usePrefersReducedMotion();
@@ -237,24 +241,64 @@ export function TrailGraph({
     instance.d3Force('link')?.distance(72);
   }, [dataKey]);
 
-  // Instant, not animated. Several overlapping animated zoomToFit calls race
-  // each other and settle on a transform that fits neither the start nor the
-  // end state. The reveal here is the hop-by-hop build, not the zoom, so a
-  // snap costs nothing.
+  // Fit computed from the real geometry rather than the library's zoomToFit.
+  //
+  // zoomToFit sizes its bounding box from `nodeRelSize`, which knows nothing
+  // about the radii and labels this component paints itself — so it
+  // consistently leaves the graph small in a mostly empty panel. Measuring the
+  // actual painted extent and setting centre + zoom directly is deterministic,
+  // and it lets the label overhang be part of the box.
   const fit = useCallback(() => {
-    graphRef.current?.zoomToFit(0, 72);
+    const instance = graphRef.current;
+    const nodes = dataRef.current.data.nodes as RenderNode[];
+    const { width, height } = sizeRef.current;
+    if (!instance || nodes.length === 0 || !width || !height) return;
+
+    let minX = Infinity;
+    let maxX = -Infinity;
+    let minY = Infinity;
+    let maxY = -Infinity;
+
+    for (const node of nodes) {
+      const x = node.x ?? 0;
+      const y = node.y ?? 0;
+      // Labels sit below the node, so the box has to allow for them or the
+      // bottom row gets clipped at the panel edge.
+      const padX = node.radius + 26;
+      const padTop = node.radius + 6;
+      const padBottom = node.radius + 18;
+      minX = Math.min(minX, x - padX);
+      maxX = Math.max(maxX, x + padX);
+      minY = Math.min(minY, y - padTop);
+      maxY = Math.max(maxY, y + padBottom);
+    }
+    if (!Number.isFinite(minX) || !Number.isFinite(minY)) return;
+
+    const margin = 28;
+    const scale = Math.min(
+      (width - margin * 2) / Math.max(1, maxX - minX),
+      (height - margin * 2) / Math.max(1, maxY - minY),
+    );
+
+    instance.centerAt((minX + maxX) / 2, (minY + maxY) / 2, 0);
+    instance.zoom(Math.min(Math.max(scale, 0.15), 8), 0);
   }, []);
 
-  // Fit once the simulation has settled. Fitting mid-layout frames the graph
-  // around positions it is about to leave, which is what leaves it huddled in
-  // one corner of an otherwise empty panel.
-  // Fit once the layout has settled (onEngineStop), with a late backstop in
-  // case the engine never reports stopping.
+  // Fit once the layout has settled (onEngineStop does the real work), with a
+  // late backstop in case the engine never reports stopping.
   useEffect(() => {
     if (!graphRef.current || visible.nodes.length === 0) return;
     const timer = window.setTimeout(fit, 2600);
     return () => window.clearTimeout(timer);
   }, [dataKey, fit, visible.nodes.length]);
+
+  // Re-fit when the panel itself changes size, so the graph does not end up
+  // framed for a viewport that no longer exists.
+  useEffect(() => {
+    if (!size.width || !size.height) return;
+    const timer = window.setTimeout(fit, 120);
+    return () => window.clearTimeout(timer);
+  }, [size.width, size.height, fit]);
 
   const hasGraph = Boolean(graph && graph.nodes.length > 0);
 

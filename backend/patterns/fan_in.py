@@ -38,7 +38,12 @@ from backend.config import (
     FAN_IN_WINDOW_SECONDS,
     HIGH_VOLUME_TX_COUNT,
 )
-from backend.patterns.base import Detection, DetectionContext, short
+from backend.patterns.base import (
+    Detection,
+    DetectionContext,
+    canonical_entity_names,
+    short,
+)
 
 SERVICE_ENTITY_TYPES = {"exchange", "service"}
 
@@ -107,7 +112,9 @@ def _features(context: DetectionContext, destination: str) -> DisambiguationFeat
 
     return DisambiguationFeatures(
         attributed_as_service=bool(service_tags),
-        attributed_entities=sorted({t.entity_name for t in service_tags}),
+        attributed_entities=canonical_entity_names(
+            t.entity_name for t in service_tags
+        ),
         destination_tx_count=tx_count,
         high_volume=tx_count >= HIGH_VOLUME_TX_COUNT,
         high_volume_threshold=HIGH_VOLUME_TX_COUNT,

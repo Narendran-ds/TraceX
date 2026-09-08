@@ -12,7 +12,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, Iterable, List, Optional
 
 from backend.clustering.engine import Cluster, ClusteringResult
 from backend.graph.builder import BuiltGraph
@@ -81,3 +81,22 @@ class DetectionContext:
 def short(value: str, keep: int = 10) -> str:
     """Shorten a hash or address for display inside a sentence."""
     return value if len(value) <= keep + 2 else f"{value[:keep]}…"
+
+
+def canonical_entity_names(names: Iterable[str]) -> List[str]:
+    """Collapse variant spellings of the same entity to one name.
+
+    Two sources can tag the same address with different name strings — a
+    TagPack's "Binance" and a curated list's "Binance (India-serving venue)" are
+    the same venue. Listing both reads as two separate entities and makes the
+    system look like it cannot count. Where one name is a prefix of another, the
+    shorter canonical form wins.
+    """
+    unique = sorted({n.strip() for n in names if n and n.strip()}, key=len)
+    kept: List[str] = []
+    for name in unique:
+        lowered = name.lower()
+        if any(lowered.startswith(k.lower()) for k in kept):
+            continue
+        kept.append(name)
+    return sorted(kept)

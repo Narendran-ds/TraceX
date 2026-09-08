@@ -291,3 +291,46 @@ def test_no_attribution_data_yields_no_names_not_placeholders(temp_db):
     candidates = rank_exit_candidates(graph, clustering, attribution)
     assert all(c.entity_name is None for c in candidates)
     assert all(c.attributed is False for c in candidates)
+
+
+def test_a_sanctioned_mixer_is_also_a_confidence_boundary(temp_db):
+    """Regression: found by the evaluation harness.
+
+    OFAC tags Tornado Cash as `sanctioned`, which is the honest type for a
+    sanctions source — but nothing marked it as a mixing service, so the trail
+    did not degrade there. Sanctioned and mixer are two independent public
+    facts: a sanctioned personal wallet is still traceable onward, while a
+    mixing service is a boundary whether or not anyone has sanctioned it.
+    """
+    txs = [tx("0xt1", at(0), [io("0xseed", 5.0)], [io(TORNADO, 5.0)])]
+    graph, clustering, attribution = _case(temp_db, txs)
+    candidates = rank_exit_candidates(graph, clustering, attribution)
+
+    tornado = next(
+        c for c in candidates
+        if TORNADO.lower() in {m.lower() for m in c.cluster.members}
+    )
+    assert tornado.confidence_boundary is True, (
+        "a sanctioned mixing service was not treated as a confidence boundary"
+    )
+    assert trail_degraded(candidates) is True
+
+    # Both facts are present, each with its own source.
+    sources = {s.source for s in tornado.sources}
+    assert "ofac_sdn" in sources
+    assert "graphsense_tagpack" in sources
+
+
+def test_entity_name_variants_collapse_to_one_name():
+    """Regression: 'Binance' and 'Binance (India-serving venue)' are one venue.
+
+    Two sources tagging the same address with different name strings read as
+    two separate entities, which makes the system look like it cannot count.
+    """
+    from backend.patterns.base import canonical_entity_names
+
+    assert canonical_entity_names(
+        ["Binance", "Binance (India-serving venue)"]
+    ) == ["Binance"]
+    assert canonical_entity_names(["Binance", "Kraken"]) == ["Binance", "Kraken"]
+    assert canonical_entity_names([]) == []

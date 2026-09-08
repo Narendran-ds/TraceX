@@ -21,6 +21,8 @@ from __future__ import annotations
 from collections import defaultdict
 from typing import Dict, Iterable, List, Sequence, Set, Tuple
 
+from backend.amounts import is_round_amount
+
 from backend.adapters.base import NormalizedTx
 
 
@@ -126,12 +128,9 @@ def cluster_common_input(
 
 # --- change-address detection ---------------------------------------------
 
-def _is_round(amount: float, tolerance: float = 1e-8) -> bool:
-    """A payment tends to be a round figure; change tends not to be."""
-    for unit in (1.0, 0.1, 0.01, 0.001):
-        if abs(amount / unit - round(amount / unit)) < tolerance:
-            return True
-    return False
+# A payment tends to be a round figure; change tends not to be. Shared with the
+# round-split detector so the two cannot drift apart.
+_is_round = is_round_amount
 
 
 def detect_change_outputs(
