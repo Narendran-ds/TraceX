@@ -16,3 +16,8 @@ data/evaluation/evaluation.db-*
 *.pdf
 *.pptx
 *.ppt
+
+# Internal project docs
+CLAUDE.md
+PROGRESS.md
+ROADMAP.md
