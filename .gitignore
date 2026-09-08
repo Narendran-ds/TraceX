@@ -11,3 +11,8 @@ data/reports/
 frontend/dist/
 data/evaluation/evaluation.db
 data/evaluation/evaluation.db-*
+
+# Documents
+*.pdf
+*.pptx
+*.ppt
